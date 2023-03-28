@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<title>
+    jokes_api
+</title>
+<script src="main.js" defer></script>
+<link href="main.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cantarell:wght@700&display=swap" rel="stylesheet">
+
+</head>
+
+    <body>
+      <div id="part-one">
+        
+        <h1>One smile is all it takes...</h1>
+        <img src="pic.png" alt="smiling_image">
+    
+    </div>
+    <div id="jokes">
+        <span id="span-one"></span>
+        <span id="span-two"></span>
+        <span id="span-three"></span>
+    </div>
+    <button id="button">Make me laugh</button>
+    <div id="para-div">
+        <p id="para">
+            In my website i used joke api to fetch the jokes from the following url endpoint <span>'https://official-joke-api.appspot.com/random_joke'</span>.
+            The fetch function sends the get request to the url then it recives the response in the form of json.All of this things are in main.js.In my main.js 
+            file,I first stored the elements of dom ie. all the span in my js by the name of ,span_one,span-two,span-three and the button by name of button.
+            Then i set the button on event listner event type is click and the fucntion reference is js_response which is a async function.Inside of the async
+            function i called the fetch method and provided the url.Notice the that i used await which will wait until the fetch promise is resolved.After this 
+            i used response.ok to see if constion is true or not if not then it will throw a error which will be handeled by the catch block.There are some addinal
+            modifications to span according to the try catch block.
+        
+        </p>
+    </div>
+    <div id="code-div">
+        
+        <button type="button id="js-button">JavaScript</button>
+     
+        <div id="code">
+            <p>
+                let js_response=async ()=>{<br>
+                    try{<br>
+                        await fetch('https://official-joke-api.appspot.com/random_joke')<br>
+                       .then((response)=>{<br>
+                        if(response.ok){<br>
+                        console.log(response.status)<br>
+                        console.log(response.ok)<br>
+                        return response.json()}<br>
+                        throw   new Error('Something went wrong');<br>
+                    })  .then((json)=>{<br>
+                        span_one.innerHTML="It goes like .."<br>
+                        span_one.style.fontSize="1.4em";<br>
+                        span_one.style.fontFamily="Outfit', sans-serif;"<br>
+                        span_three.style.fontSize="1.2em";<br>
+                        span_two.style.display="block";<br>
+                        span_two.innerHTML=json.setup;<br>
+                        span_three.innerHTML=json.punchline;<br>
+                        
+                       }<br>
+                    
+                    )<br>
+                   }<br>
+                   catch(error){<br>
+                    console.log("error occured "+error)<br>
+                    span_one.innerHTML="Sorry!.."<br>
+                    span_one.style.fontSize="2em";<br>
+                    span_one.style.fontFamily="font-family: 'Kalam', cursive;"<br>
+                    span_three.innerHTML="Network error please try again";<br>
+                    span_two.style.display="none";<br>
+                    span_three.style.fontSize="3em";<br>
+                   }
+                 
+                }<br>
+                
+                
+                let span_two=document.getElementById('span-two');<br>
+                let span_three=document.getElementById('span-three');<br>
+                let button=document.getElementById("button");<br>
+                let span_one=document.getElementById('span-one');<br>
+                button.addEventListener('click',js_response);</p>
+        </div>
+    </div>
+    <div id="footer">
+        <a href="https://github.com/Msuf123" target="_blank"><img src="icons8-github-512.png" alt="gir-hub-image"></a>
+        <span>@Msuf123</span>
+    </div>
+    </body>
+</html>
